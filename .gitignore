@@ -13,3 +13,5 @@ src/main/resources/docs/
 *.iml
 bin/
 
+_temp/
+
