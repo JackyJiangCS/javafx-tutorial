@@ -28,6 +28,21 @@ shadowJar {
     archiveClassifier = null
 }
 
+tasks.register('dukeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DukeTest'
+}
+
+tasks.named('check') {
+    dependsOn dukeTest
+}
+
+tasks.named('test') {
+    // The dependency-free integration harness is executed by dukeTest.
+    failOnNoDiscoveredTests = false
+}
+
 dependencies {
     String javaFxVersion = '17.0.7'
 
